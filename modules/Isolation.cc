@@ -187,7 +187,8 @@ void Isolation::Process()
       const TLorentzVector &isolationMomentum = isolation->Momentum;
 
       if(candidateMomentum.DeltaR(isolationMomentum) <= fDeltaRMax &&
-         candidate->GetUniqueID() != isolation->GetUniqueID())
+           !candidate->Overlaps(isolation))
+//         candidate->GetUniqueID() != isolation->GetUniqueID())
       {
         sum += isolationMomentum.Pt();
         ++counter;
