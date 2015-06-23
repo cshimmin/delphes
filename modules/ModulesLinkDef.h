@@ -57,6 +57,7 @@
 #include "modules/Weighter.h"
 #include "modules/Hector.h"
 #include "modules/ExampleModule.h"
+#include "modules/FatJet.h"
 
 #ifdef __CINT__
 
@@ -96,5 +97,6 @@
 #pragma link C++ class Weighter+;
 #pragma link C++ class Hector+;
 #pragma link C++ class ExampleModule+;
+#pragma link C++ class FatJet+;
 
 #endif
