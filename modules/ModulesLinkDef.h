@@ -61,7 +61,7 @@
 #include "modules/RunPUPPI.h"
 #include "modules/JetFlavorAssociation.h"
 #include "modules/ExampleModule.h"
-#include "modules/FatJet.h"
+#include "modules/FatJetSelector.h"
 
 #ifdef __CINT__
 
@@ -105,6 +105,6 @@
 #pragma link C++ class RunPUPPI+;
 #pragma link C++ class JetFlavorAssociation+;
 #pragma link C++ class ExampleModule+;
-#pragma link C++ class FatJet+;
+#pragma link C++ class FatJetSelector+;
 
 #endif
