@@ -335,7 +335,8 @@ tmp/modules/ModulesDict.$(SrcSuf): \
 	modules/Cloner.h \
 	modules/Weighter.h \
 	modules/Hector.h \
-	modules/ExampleModule.h
+	modules/ExampleModule.h \
+	modules/FatJetSelector.h
 ModulesDict$(PcmSuf): \
 	tmp/modules/ModulesDict$(PcmSuf) \
 	tmp/modules/ModulesDict.$(SrcSuf)
@@ -611,6 +612,10 @@ tmp/modules/ExampleModule.$(ObjSuf): \
 	external/ExRootAnalysis/ExRootResult.h \
 	external/ExRootAnalysis/ExRootFilter.h \
 	external/ExRootAnalysis/ExRootClassifier.h
+tmp/modules/FatJetSelector.$(ObjSuf): \
+	modules/FatJetSelector.$(SrcSuf) \
+	modules/FatJetSelector.h \
+	classes/DelphesClasses.h
 tmp/modules/Hector.$(ObjSuf): \
 	modules/Hector.$(SrcSuf) \
 	modules/Hector.h \
@@ -870,6 +875,7 @@ DELPHES_OBJ +=  \
 	tmp/modules/EnergyScale.$(ObjSuf) \
 	tmp/modules/EnergySmearing.$(ObjSuf) \
 	tmp/modules/ExampleModule.$(ObjSuf) \
+	tmp/modules/FatJetSelector.$(ObjSuf) \
 	tmp/modules/Hector.$(ObjSuf) \
 	tmp/modules/IdentificationMap.$(ObjSuf) \
 	tmp/modules/ImpactParameterSmearing.$(ObjSuf) \
@@ -1657,6 +1663,10 @@ external/fastjet/internal/LazyTiling9.hh: \
 	external/fastjet/internal/MinHeap.hh \
 	external/fastjet/ClusterSequence.hh \
 	external/fastjet/internal/LazyTiling9Alt.hh
+	@touch $@
+
+modules/FatJetSelector.h: \
+	classes/DelphesModule.h
 	@touch $@
 
 modules/PileUpJetID.h: \
