@@ -21,7 +21,8 @@ private:
   const TObjArray *fInputJetArray; //!
   const TObjArray *fInputPhotonArray; //!
   TIterator *fItInputJetArray; //!
-  TObjArray *fOutputArray; //!
+  TObjArray *fOutputConstituentArray; //!
+  TObjArray *fOutputJetArray; //!
 
   ClassDef(FatJetSelector, 1)
 };
