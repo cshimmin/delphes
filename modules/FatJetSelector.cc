@@ -19,7 +19,8 @@ void FatJetSelector::Init() {
   fInputPhotonArray = ImportArray(GetString("InputPhotonArray", "Calorimeter/photons"));
   fItInputJetArray = fInputJetArray->MakeIterator();
 
-  fOutputArray = ExportArray(GetString("OutputArray", "constituents"));
+  fOutputConstituentArray = ExportArray(GetString("OutputConstituentArray", "constituents"));
+  fOutputJetArray = ExportArray(GetString("OutputJetArray", "fatjet"));
 }
 
 void FatJetSelector::Finish() {
@@ -79,7 +80,9 @@ void FatJetSelector::Process() {
   TObjArray *constituents = best_jet->GetCandidates();
   TIter constIt(constituents);
 
+  fOutputJetArray->Add(best_jet);
+
   while ((constituent = static_cast<Candidate *>(constIt.Next()))) {
-    fOutputArray->Add(constituent);
+    fOutputConstituentArray->Add(constituent);
   }
 }
