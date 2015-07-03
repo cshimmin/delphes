@@ -233,6 +233,8 @@ public:
   Float_t Eta; // photon pseudorapidity
   Float_t Phi; // photon azimuthal angle
 
+  TLorentzVector Momentum;
+
   Float_t E; // photon energy
 
   Float_t T; //particle arrival time of flight
@@ -335,6 +337,8 @@ public:
   Float_t PT; // jet transverse momentum
   Float_t Eta; // jet pseudorapidity
   Float_t Phi; // jet azimuthal angle
+
+  TLorentzVector Momentum;
 
   Float_t T; //particle arrival time of flight
 

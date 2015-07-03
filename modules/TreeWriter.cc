@@ -363,7 +363,7 @@ void TreeWriter::ProcessTowers(ExRootTreeBranch *branch, TObjArray *array)
     entry->T = position.T()*1.0E-3/c_light;
     entry->NTimeHits = candidate->NTimeHits;
 
-    FillParticles(candidate, &entry->Particles);
+    //FillParticles(candidate, &entry->Particles);
   }
 }
 
@@ -401,6 +401,8 @@ void TreeWriter::ProcessPhotons(ExRootTreeBranch *branch, TObjArray *array)
     entry->PT = pt;
     entry->E = momentum.E();
 
+    entry->Momentum = momentum;
+
     entry->T = position.T()*1.0E-3/c_light;
 
     // Isolation variables
@@ -414,7 +416,7 @@ void TreeWriter::ProcessPhotons(ExRootTreeBranch *branch, TObjArray *array)
 
     entry->EhadOverEem = candidate->Eem > 0.0 ? candidate->Ehad/candidate->Eem : 999.9;
 
-    FillParticles(candidate, &entry->Particles);
+    //FillParticles(candidate, &entry->Particles);
   }
 }
 
@@ -556,6 +558,8 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
     entry->Phi = momentum.Phi();
     entry->PT = pt;
 
+    entry->Momentum = momentum;
+
     entry->T = position.T()*1.0E-3/c_light;
 
     entry->Mass = momentum.M();
@@ -584,7 +588,7 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
     hcalEnergy = 0.0;
     while((constituent = static_cast<Candidate*>(itConstituents.Next())))
     {
-      entry->Constituents.Add(constituent);
+      //entry->Constituents.Add(constituent);
       ecalEnergy += constituent->Eem;
       hcalEnergy += constituent->Ehad;
     }
@@ -615,7 +619,7 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
       entry->SoftDroppedP4[i] = candidate -> SoftDroppedP4[i];
     }
 
-    FillParticles(candidate, &entry->Particles);
+    //FillParticles(candidate, &entry->Particles);
   }
 }
 
