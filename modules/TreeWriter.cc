@@ -401,8 +401,6 @@ void TreeWriter::ProcessPhotons(ExRootTreeBranch *branch, TObjArray *array)
     entry->PT = pt;
     entry->E = momentum.E();
 
-    entry->Momentum = momentum;
-
     entry->T = position.T()*1.0E-3/c_light;
 
     // Isolation variables
@@ -557,8 +555,6 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
     entry->Eta = eta;
     entry->Phi = momentum.Phi();
     entry->PT = pt;
-
-    entry->Momentum = momentum;
 
     entry->T = position.T()*1.0E-3/c_light;
 
