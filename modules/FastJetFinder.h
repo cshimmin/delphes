@@ -82,6 +82,11 @@ private:
   Double_t fRcutOff;
   Int_t fN ;
 
+  //-- EnergyCorrelator parameters --
+  Bool_t fComputeECorr;
+  Double_t fECorrBeta;
+  Int_t fECorrMeasureMode;
+
   //-- Trimming parameters --
   
   Bool_t fComputeTrimming;

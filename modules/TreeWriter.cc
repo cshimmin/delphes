@@ -616,6 +616,10 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
     }
 
     entry->Mass_trim = candidate->TrimmedP4[0].M();
+
+    entry->C2 = candidate->EC_C2;
+    entry->D2 = candidate->EC_D2;
+
     FillParticles(candidate, &entry->Particles);
   }
 }
