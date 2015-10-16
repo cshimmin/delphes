@@ -142,6 +142,8 @@ Candidate::Candidate() :
   SumPtNeutral(-999),
   SumPtChargedPU(-999),
   SumPt(-999),
+  EC_C2(0),
+  EC_D2(0),
   NSubJetsTrimmed(0),
   NSubJetsPruned(0),
   NSubJetsSoftDropped(0),
@@ -293,6 +295,9 @@ void Candidate::Copy(TObject &obj) const
   object.Tau[3] = Tau[3];
   object.Tau[4] = Tau[4];
 
+  object.EC_C2 = EC_C2;
+  object.EC_D2 = EC_D2;
+
   object.TrimmedP4[0] = TrimmedP4[0];
   object.TrimmedP4[1] = TrimmedP4[1];
   object.TrimmedP4[2] = TrimmedP4[2];
@@ -396,6 +401,9 @@ void Candidate::Clear(Option_t* option)
   Tau[2] = 0.0;
   Tau[3] = 0.0;
   Tau[4] = 0.0;
+
+  EC_C2 = 0.0;
+  EC_D2 = 0.0;
 
   for(i = 0; i < 5; ++i)
   {
