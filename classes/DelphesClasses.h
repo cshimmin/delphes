@@ -367,22 +367,24 @@ public:
 
   Float_t Tau[5]; // N-subjettiness
 
-  TLorentzVector TrimmedP4[5]; // first entry (i = 0) is the total Trimmed Jet 4-momenta and from i = 1 to 4 are the trimmed subjets 4-momenta
-  TLorentzVector PrunedP4[5]; // first entry (i = 0) is the total Pruned Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
-  TLorentzVector SoftDroppedP4[5]; // first entry (i = 0) is the total SoftDropped Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
+  TLorentzVector TrimmedP4[5]; //! first entry (i = 0) is the total Trimmed Jet 4-momenta and from i = 1 to 4 are the trimmed subjets 4-momenta
+  TLorentzVector PrunedP4[5]; //! first entry (i = 0) is the total Pruned Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
+  TLorentzVector SoftDroppedP4[5]; //! first entry (i = 0) is the total SoftDropped Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
+
+  Float_t Mass_trim;
 
   Int_t NSubJetsTrimmed; // number of subjets trimmed
   Int_t NSubJetsPruned; // number of subjets pruned
   Int_t NSubJetsSoftDropped; // number of subjets soft-dropped
 
-  TRefArray Constituents; // references to constituents
-  TRefArray Particles; // references to generated particles
+  TRefArray Constituents; //! references to constituents
+  TRefArray Particles; //! references to generated particles
 
   static CompBase *fgCompare; //!
   const CompBase *GetCompare() const { return fgCompare; }
 
   TLorentzVector P4() const;
-  TLorentzVector Area;
+  TLorentzVector Area; //!
 
   ClassDef(Jet, 3)
 };

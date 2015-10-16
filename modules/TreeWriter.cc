@@ -615,6 +615,7 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
       entry->SoftDroppedP4[i] = candidate -> SoftDroppedP4[i];
     }
 
+    entry->Mass_trim = candidate->TrimmedP4[0].M();
     FillParticles(candidate, &entry->Particles);
   }
 }
