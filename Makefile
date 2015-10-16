@@ -1104,6 +1104,8 @@ tmp/external/fastjet/TilingExtent.$(ObjSuf): \
 tmp/external/fastjet/Voronoi.$(ObjSuf): \
 	external/fastjet/Voronoi.$(SrcSuf) \
 	external/fastjet/internal/Voronoi.hh
+tmp/external/fastjet/contribs/EnergyCorrelator/EnergyCorrelator.$(ObjSuf): \
+	external/fastjet/contribs/EnergyCorrelator/EnergyCorrelator.$(SrcSuf)
 tmp/external/fastjet/contribs/Nsubjettiness/AxesDefinition.$(ObjSuf): \
 	external/fastjet/contribs/Nsubjettiness/AxesDefinition.$(SrcSuf)
 tmp/external/fastjet/contribs/Nsubjettiness/ExtraRecombiners.$(ObjSuf): \
@@ -1268,7 +1270,8 @@ tmp/modules/FastJetFinder.$(ObjSuf): \
 	external/fastjet/contribs/Nsubjettiness/ExtraRecombiners.hh \
 	external/fastjet/tools/Filter.hh \
 	external/fastjet/tools/Pruner.hh \
-	external/fastjet/contribs/RecursiveTools/SoftDrop.hh
+	external/fastjet/contribs/RecursiveTools/SoftDrop.hh \
+	external/fastjet/contribs/EnergyCorrelator/EnergyCorrelator.hh
 tmp/modules/FastJetGridMedianEstimator.$(ObjSuf): \
 	modules/FastJetGridMedianEstimator.$(SrcSuf) \
 	modules/FastJetGridMedianEstimator.h \
@@ -1291,7 +1294,8 @@ tmp/modules/FastJetGridMedianEstimator.$(ObjSuf): \
 	external/fastjet/plugins/CDFCones/fastjet/CDFJetCluPlugin.hh \
 	external/fastjet/contribs/Nsubjettiness/Nsubjettiness.hh \
 	external/fastjet/contribs/Nsubjettiness/Njettiness.hh \
-	external/fastjet/contribs/Nsubjettiness/NjettinessPlugin.hh
+	external/fastjet/contribs/Nsubjettiness/NjettinessPlugin.hh \
+	external/fastjet/contribs/Nsubjettiness/ExtraRecombiners.hh
 tmp/modules/RunPUPPI.$(ObjSuf): \
 	modules/RunPUPPI.$(SrcSuf) \
 	modules/RunPUPPI.h \
@@ -1343,6 +1347,7 @@ FASTJET_OBJ +=  \
 	tmp/external/fastjet/Selector.$(ObjSuf) \
 	tmp/external/fastjet/TilingExtent.$(ObjSuf) \
 	tmp/external/fastjet/Voronoi.$(ObjSuf) \
+	tmp/external/fastjet/contribs/EnergyCorrelator/EnergyCorrelator.$(ObjSuf) \
 	tmp/external/fastjet/contribs/Nsubjettiness/AxesDefinition.$(ObjSuf) \
 	tmp/external/fastjet/contribs/Nsubjettiness/ExtraRecombiners.$(ObjSuf) \
 	tmp/external/fastjet/contribs/Nsubjettiness/MeasureDefinition.$(ObjSuf) \
@@ -1797,6 +1802,10 @@ modules/TrackCountingBTagging.h: \
 
 modules/PileUpMergerPythia8.h: \
 	classes/DelphesModule.h
+	@touch $@
+
+external/fastjet/contribs/EnergyCorrelator/EnergyCorrelator.hh: \
+	external/fastjet/FunctionOfPseudoJet.hh
 	@touch $@
 
 external/fastjet/ClusterSequenceActiveArea.hh: \

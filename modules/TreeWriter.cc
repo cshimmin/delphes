@@ -615,6 +615,9 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
       entry->SoftDroppedP4[i] = candidate -> SoftDroppedP4[i];
     }
 
+    entry->C2 = candidate->EC_C2;
+    entry->D2 = candidate->EC_D2;
+
     FillParticles(candidate, &entry->Particles);
   }
 }

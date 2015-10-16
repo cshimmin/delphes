@@ -1,0 +1,18 @@
+The EnergyCorrelator FastJet contrib was written and is maintained and developed by:
+
+   Andrew Larkoski <larkoski@mit.edu>
+   Gavin Salam <gavin.salam@cern.ch>
+   Jesse Thaler <jthaler@jthaler.net>
+
+For physics details, see:
+
+   Energy Correlation Functions for Jet Substructure.
+   Andrew J. Larkoski, Gavin P. Salam, and Jesse Thaler.
+   JHEP 1306, 108 (2013)
+   arXiv:1305.0007.
+
+   Power Counting to Better Jet Observables.
+   Andrew J. Larkoski, Ian Moult, and Duff Neill.
+   arXiv:1409.6298.
+
+----------------------------------------------------------------------

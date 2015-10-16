@@ -69,10 +69,11 @@
 #include "fastjet/tools/Pruner.hh"
 #include "fastjet/contribs/RecursiveTools/SoftDrop.hh"
 
+#include "fastjet/contribs/EnergyCorrelator/EnergyCorrelator.hh"
+
 using namespace std;
 using namespace fastjet;
 using namespace fastjet::contrib;
-
 
 //------------------------------------------------------------------------------
 
@@ -123,6 +124,11 @@ void FastJetFinder::Init()
   fAxisMode = GetInt("AxisMode", 1);
   fRcutOff = GetDouble("RcutOff", 0.8); // used only if Njettiness is used as jet clustering algo (case 8)
   fN = GetInt("N", 2);                  // used only if Njettiness is used as jet clustering algo (case 8)
+
+  //-- EnergyCorrelator parameters --
+  fComputeECorr = GetBool("ComputeEnergyCorrelator", false);
+  fECorrBeta = GetDouble("ECorrBeta", 1.0);
+  fECorrMeasureMode = GetInt("ECorrMeasureMode", 1);
 
   //-- Trimming parameters --
   
@@ -510,6 +516,14 @@ void FastJetFinder::Process()
       candidate->Tau[2] = nSub3(*itOutputList);
       candidate->Tau[3] = nSub4(*itOutputList);
       candidate->Tau[4] = nSub5(*itOutputList);
+    }
+
+    if(fComputeECorr) {
+      EnergyCorrelatorC2 c2(fECorrBeta, EnergyCorrelator::pt_R);
+      EnergyCorrelatorD2 d2(fECorrBeta, EnergyCorrelator::pt_R);
+
+      candidate->EC_C2 = c2(jet);
+      candidate->EC_D2 = d2(jet);
     }
 
     fOutputArray->Add(candidate);

@@ -367,6 +367,9 @@ public:
 
   Float_t Tau[5]; // N-subjettiness
 
+  Float_t C2; // EnergyCorrelator C2
+  Float_t D2; // EnergyCorrelator D2
+
   TLorentzVector TrimmedP4[5]; // first entry (i = 0) is the total Trimmed Jet 4-momenta and from i = 1 to 4 are the trimmed subjets 4-momenta
   TLorentzVector PrunedP4[5]; // first entry (i = 0) is the total Pruned Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
   TLorentzVector SoftDroppedP4[5]; // first entry (i = 0) is the total SoftDropped Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
@@ -564,6 +567,10 @@ public:
   // N-subjettiness variables
 
   Float_t Tau[5];
+
+  // EnercyCorrelator variables
+  Float_t EC_C2;
+  Float_t EC_D2;
 
   // Other Substructure variables
 
