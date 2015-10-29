@@ -619,6 +619,9 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
 
     entry->C2 = candidate->EC_C2;
     entry->D2 = candidate->EC_D2;
+    entry->C2_trim = candidate->EC_C2_trim;
+    entry->D2_trim = candidate->EC_D2_trim;
+    entry->Tau21_trim = candidate->Tau21_trim;
 
     FillParticles(candidate, &entry->Particles);
   }

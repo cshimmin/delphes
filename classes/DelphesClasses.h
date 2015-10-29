@@ -375,6 +375,9 @@ public:
   TLorentzVector SoftDroppedP4[5]; //! first entry (i = 0) is the total SoftDropped Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
 
   Float_t Mass_trim;
+  Float_t C2_trim;
+  Float_t D2_trim;
+  Float_t Tau21_trim;
 
   Int_t NSubJetsTrimmed; // number of subjets trimmed
   Int_t NSubJetsPruned; // number of subjets pruned
@@ -573,6 +576,10 @@ public:
   // EnercyCorrelator variables
   Float_t EC_C2;
   Float_t EC_D2;
+
+  Float_t EC_C2_trim;
+  Float_t EC_D2_trim;
+  Float_t Tau21_trim;
 
   // Other Substructure variables
 

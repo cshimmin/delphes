@@ -115,6 +115,8 @@ void FastJetFinder::Init()
   fAdjacencyCut = GetInt("AdjacencyCut", 2);
   fOverlapThreshold = GetDouble("OverlapThreshold", 0.75);
 
+  fEScale = GetDouble("EScale", 0.0);
+
   fJetPTMin = GetDouble("JetPTMin", 10.0);
 
   //-- N(sub)jettiness parameters --
@@ -307,6 +309,9 @@ void FastJetFinder::Process()
   {
     momentum = candidate->Momentum;
     jet = PseudoJet(momentum.Px(), momentum.Py(), momentum.Pz(), momentum.E());
+    if (fEScale > 0) {
+	    jet *= fEScale;
+    }
     jet.set_user_index(number);
     inputList.push_back(jet);
     ++number;
@@ -404,16 +409,17 @@ void FastJetFinder::Process()
     // Trimming
     //------------------------------------
 
-     if(fComputeTrimming)
+    fastjet::PseudoJet trimmed_jet;
+    if(fComputeTrimming)
     {
 
       fastjet::Filter    trimmer(fastjet::JetDefinition(fastjet::kt_algorithm,fRTrim),fastjet::SelectorPtFractionMin(fPtFracTrim));
-      fastjet::PseudoJet trimmed_jet = trimmer(*itOutputList);
+      trimmed_jet = trimmer(*itOutputList);
       
       trimmed_jet = join(trimmed_jet.constituents());
      
       candidate->TrimmedP4[0].SetPtEtaPhiM(trimmed_jet.pt(), trimmed_jet.eta(), trimmed_jet.phi(), trimmed_jet.m());
-        
+
       // four hardest subjets 
       subjets.clear();
       subjets = trimmed_jet.pieces();
@@ -516,6 +522,16 @@ void FastJetFinder::Process()
       candidate->Tau[2] = nSub3(*itOutputList);
       candidate->Tau[3] = nSub4(*itOutputList);
       candidate->Tau[4] = nSub5(*itOutputList);
+
+      if(fComputeTrimming) {
+        Float_t tau1 = nSub1(trimmed_jet);
+        Float_t tau2 = nSub2(trimmed_jet);
+        if(tau1 == 0) {
+          candidate->Tau21_trim = -1;
+        } else {
+          candidate->Tau21_trim = tau2 / tau1;
+        }
+      }
     }
 
     if(fComputeECorr) {
@@ -524,6 +540,16 @@ void FastJetFinder::Process()
 
       candidate->EC_C2 = c2(jet);
       candidate->EC_D2 = d2(jet);
+
+      if(fComputeTrimming) {
+        if(! trimmed_jet.has_constituents()) {
+          candidate->EC_C2_trim = -1;
+          candidate->EC_D2_trim = -1;
+        } else {
+          candidate->EC_C2_trim = c2(trimmed_jet);
+          candidate->EC_D2_trim = d2(trimmed_jet);
+	}
+      }
     }
 
     fOutputArray->Add(candidate);

@@ -74,6 +74,8 @@ private:
   Int_t fAdjacencyCut;
   Double_t fOverlapThreshold;
 
+  Double_t fEScale;
+
   //-- N (sub)jettiness parameters --
 
   Bool_t fComputeNsubjettiness;
