@@ -374,6 +374,7 @@ public:
   TLorentzVector PrunedP4[5]; //! first entry (i = 0) is the total Pruned Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
   TLorentzVector SoftDroppedP4[5]; //! first entry (i = 0) is the total SoftDropped Jet 4-momenta and from i = 1 to 4 are the pruned subjets 4-momenta
 
+  Float_t PT_trim;
   Float_t Mass_trim;
   Float_t C2_trim;
   Float_t D2_trim;
