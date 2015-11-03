@@ -616,6 +616,8 @@ void TreeWriter::ProcessJets(ExRootTreeBranch *branch, TObjArray *array)
     }
 
     entry->PT_trim = candidate->TrimmedP4[0].Pt();
+    entry->Eta_trim = candidate->TrimmedP4[0].Eta();
+    entry->Phi_trim = candidate->TrimmedP4[0].Phi();
     entry->Mass_trim = candidate->TrimmedP4[0].M();
 
     entry->C2 = candidate->EC_C2;
